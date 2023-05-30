@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     if ("geolocation" in navigator) {
         getLocation();
-        setInterval(getLocation, 1000); // 1초마다 위치 정보 업데이트
+        setInterval(getLocation, 5000); // 5초마다 위치 정보 업데이트
     } else {
         alert("위치 정보를 가져올 수 없습니다.");
     }
@@ -16,6 +16,14 @@ function showPosition(position) {
     var longitude = position.coords.longitude;
     document.getElementById("latitude").textContent = latitude;
     document.getElementById("longitude").textContent = longitude;
+    showMap(latitude, longitude);
+}
+
+function showMap(latitude, longitude) {
+    var mapContainer = document.getElementById("map");
+    var api = "AIzaSyDjAmB0s0mfb01GaYlZtkgX9zGPKbIoO58";
+    var mapUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=15&size=400x300&markers=color:red%7Clabel:A%7C" + latitude + "," + longitude + "&key=" + api;
+    mapContainer.src = mapUrl;
 }
 
 function showError(error) {
