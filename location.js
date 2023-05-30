@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     if ("geolocation" in navigator) {
         getLocation();
-        setInterval(getLocation, 100); // 0.1초마다 위치 정보 업데이트
+        setInterval(getLocation, 1000); // 0.1초마다 위치 정보 업데이트
     } else {
         alert("위치 정보를 가져올 수 없습니다.");
     }
